@@ -28,6 +28,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Activities.System.Collections</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -66,9 +67,20 @@
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create a dictionary where key=country name and value=List of cities. Add a new city for US &amp; write all the cities from US. Remove a city from the list for UK &amp; write all the cities from UK. " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1512,1100" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create a dictionary where key=country name and value=List of cities. Add a new city for US &amp; write all the cities from US. Remove a city from the list for UK &amp; write all the cities from UK. " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1512,1273" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(x:String))" Name="Cities" />
     </Sequence.Variables>
@@ -105,7 +117,7 @@
         </scg:List>
       </uasc:BuildCollection.NextItems>
     </uasc:BuildCollection>
-    <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[Cities(&quot;US&quot;)]" DisplayName="Append item to collection" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1">
+    <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[Cities(&quot;US&quot;)]" DisplayName="Append Item to US Cities Collection" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1">
       <uasc:AppendItemToCollection.Items>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">Portland</InArgument>
@@ -119,6 +131,13 @@
       </sap:WorkflowViewStateService.ViewState>
     </uasc:AppendItemToCollection>
     <uasc:RemoveFromCollection x:TypeArguments="x:String" Index="{x:Null}" Collection="[Cities(&quot;UK&quot;)]" DisplayName="Remove London from UK Cities" sap:VirtualizedContainerService.HintSize="434,249" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_1" Item="London" RemoveAllElements="False" Result="[Cities(&quot;UK&quot;)]" />
-    <ui:LogMessage DisplayName="Print Resulting US and UK cities" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;US Cities : &quot;+ String.Join(&quot;, &quot;,Cities(&quot;US&quot;)) + vbLf + &quot;and&quot; + vbLf + &quot;UK Cities : &quot;+ String.Join(&quot;, &quot;,Cities(&quot;UK&quot;))]" />
+    <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[Cities(&quot;UK&quot;)]" DisplayName="Append Items to UK Cities Collection" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_2">
+      <uasc:AppendItemToCollection.Items>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">Liverpool</InArgument>
+        </scg:List>
+      </uasc:AppendItemToCollection.Items>
+    </uasc:AppendItemToCollection>
+    <ui:LogMessage DisplayName="Print Resulting US and UK cities" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;US Cities : &quot;+ String.Join(&quot;, &quot;,Cities(&quot;US&quot;)) + vbLf + &quot;UK Cities : &quot;+ String.Join(&quot;, &quot;,Cities(&quot;UK&quot;))]" />
   </Sequence>
 </Activity>
